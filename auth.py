@@ -6,7 +6,7 @@ load_dotenv()
 
 oauth = OAuth()
 
-auth0 = None  # set by init_auth0() once the Flask app exists
+auth0 = None  
 
 
 def init_auth0(app):
