@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CST8919 - Assignment 1: Securing and Monitoring an Authenticated Flask App
 
 **Student Name**: Naveed Hossain
@@ -228,3 +229,6 @@ and user agent to catch credential-stuffing patterns, not just excessive
 route alerts to a SIEM instead of only email; automate a response action
 (e.g. temporarily blocking the offending IP via a Logic App) rather than
 just notifying a human, per the Lab 2 reflection.
+=======
+# CST8919 Assignment 1
+>>>>>>> d6c0237806a445526ab82ca104f8200de972c2de
