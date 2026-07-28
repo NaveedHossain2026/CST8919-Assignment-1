@@ -9,8 +9,6 @@
 
 ---
 
-# CST8919 Assignment 1 – Secure Flask App
-
 A Flask web app that uses Auth0 for login, is deployed to Azure App Service, and logs user activity to Azure Monitor. An alert is triggered when a user accesses the protected page too many times.
 
 **YouTube Demo:** <PASTE YOUR YOUTUBE LINK HERE>
