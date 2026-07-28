@@ -5,9 +5,7 @@
 **Course**: CST8919 DevOps - Security and Compliance
 **Semester**: Spring/Summer 2026
 
----
 
-**YouTube demo:** `<PASTE YOUR YOUTUBE LINK HERE>`
 
 ---
 
