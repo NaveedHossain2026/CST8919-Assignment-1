@@ -15,13 +15,7 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv('AUTH0_SECRET')
 
-# Azure App Service terminates SSL at its front-end load balancer and
-# forwards requests to this app over plain HTTP, adding an
-# X-Forwarded-Proto header to say the original request was HTTPS. Without
-# this, Flask's url_for(..., _external=True) - used for the OAuth
-# redirect_uri and the Auth0 logout returnTo - builds http:// URLs even
-# though the user is on https://, which Auth0 rejects since only the
-# https:// URL is registered in Allowed Callback/Logout URLs.
+
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 app.config.update(
