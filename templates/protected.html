@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Protected Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f7f6; color: #333; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 600px; }
+        .secure-badge { background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔒 Custom Protected Dashboard <span class="secure-badge">SECURE</span></h1>
+        <p><strong>Success!</strong> You are successfully viewing a custom route secured by an authentication guard clause statement.</p>
+        
+        <hr>
+        
+        <h3>Token Profile Payload Data:</h3>
+        <ul>
+            <li><strong>Subject Identity ID (sub):</strong> {{ user.sub }}</li>
+            <li><strong>Verified User Name:</strong> {{ user.name }}</li>
+            <li><strong>User Email Address:</strong> {{ user.email }}</li>
+        </ul>
+        
+        <hr>
+        <p><a href="/">← Return to Public Home Page</a></p>
+    </div>
+</body>
+</html>

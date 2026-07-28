@@ -1,0 +1,45 @@
+@baseUrl = https://<your-app-name>.azurewebsites.net
+@localUrl = http://localhost:5000
+
+### 1. Home page (unauthenticated) - shows "Log In" button
+GET {{baseUrl}}/
+
+### 2. Access /protected WITHOUT a session
+# Expect: 302 redirect to /login, and an "unauthorized_attempt" log entry
+GET {{baseUrl}}/protected
+
+### 3. Access /profile WITHOUT a session (same guard clause, other protected route)
+# Expect: 302 redirect to /login, and an "unauthorized_attempt" log entry
+GET {{baseUrl}}/profile
+
+### 4. Start the Auth0 login flow
+# Open this one in a BROWSER, not the REST Client, since it redirects to
+# Auth0's hosted login page and then back to /callback.
+GET {{baseUrl}}/login
+
+### 5. After logging in via the browser, copy the session cookie from dev tools
+#    and paste it below to simulate authenticated requests to /protected.
+#    Expect: 200 OK, and a "protected_access" log entry with user_id + email
+GET {{baseUrl}}/protected
+Cookie: <paste-authenticated-session-cookie-here>
+
+### 6. Repeat request #5 more than 10 times within 15 minutes to simulate the
+#    "excessive access" scenario the KQL query / alert is designed to catch.
+GET {{baseUrl}}/protected
+Cookie: <paste-authenticated-session-cookie-here>
+
+### 7. View profile page while authenticated
+GET {{baseUrl}}/profile
+Cookie: <paste-authenticated-session-cookie-here>
+
+### 8. Logout - should show a "logout" log entry and redirect to Auth0 logout
+GET {{baseUrl}}/logout
+Cookie: <paste-authenticated-session-cookie-here>
+
+### --- Local testing (run `python app.py`, then hit localhost:5000) ---
+
+### 9. Local: unauthenticated /protected
+GET {{localUrl}}/protected
+
+### 10. Local: home page
+GET {{localUrl}}/
